@@ -2,14 +2,14 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def app_start():
+def get_isbns():
     url_prefix = 'https://www.yes24.com/'
     book_links = get_book_links(url_prefix)
 
     isbns = []
     for book_link in book_links:
         isbns.append(get_isbn13(url_prefix + book_link))
-    print(isbns)
+    return isbns
 
 
 def get_book_links(url):
@@ -34,5 +34,5 @@ def get_isbn13(url):
 
 
 if __name__ == '__main__':
-    app_start()
+    get_isbns()
 
