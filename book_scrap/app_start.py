@@ -1,6 +1,6 @@
-from book_scrap.best_seller import yes24
-from book_scrap.data import data_book
-from book_scrap.chaeking import book
+from best_seller import yes24
+from data import data_book
+from chaeking import book
 
 
 def app():
