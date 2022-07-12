@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 
+from . import get_isbn13
+
 
 def get_isbns():
     url_prefix = 'https://www.yes24.com/'
@@ -23,16 +25,3 @@ def get_book_links(url):
         links.append(r['href'])
 
     return links
-
-
-def get_isbn13(url):
-    html = requests.get(url).text
-    soup = BeautifulSoup(html, 'html.parser')
-
-    isbn13 = soup.select_one('#infoset_specific table > tbody > tr:nth-child(3) > td').get_text()
-    return isbn13
-
-
-if __name__ == '__main__':
-    get_isbns()
-
