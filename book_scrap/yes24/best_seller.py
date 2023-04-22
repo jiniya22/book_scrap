@@ -10,7 +10,9 @@ def get_isbns():
 
     isbns = []
     for book_link in book_links:
-        isbns.append(get_isbn13(url_prefix + book_link))
+        isbn = get_isbn13(url_prefix + book_link)
+        if isbn:
+            isbns.append(isbn)
     return isbns
 
 

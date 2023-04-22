@@ -4,14 +4,13 @@ chaeking_url = "http://localhost:8080"
 
 
 def get_id_by_isbn(isbn):
-    params = {"query": isbn, "target": "isbn", "size": 1}
     book_id = None
     try:
-        with requests.get(chaeking_url + "/v1/books", params=params, verify=False, allow_redirects=False,
+        with requests.get(chaeking_url + "/v1/books/isbn13/" + isbn, verify=False, allow_redirects=False,
                           timeout=50) as response:
             if response.status_code == 200:
-                if response.json() and 'data' in response.json() and len(response.json()['data']) > 0:
-                    book_id = response.json()['data'][0]['id']
+                if response.json() and 'data' in response.json() and response.json()['data'] is not None:
+                    book_id = response.json()['data']['id']
     except requests.exceptions.SSLError as e:
         print("SSLError!!", e)
     except requests.Timeout as e:
