@@ -1,6 +1,8 @@
 import requests
+import urllib3
 
-chaeking_url = "http://localhost:8080"
+chaeking_url = "https://api.chaeking.com"
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 def get_id_by_isbn(isbn):
